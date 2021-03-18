@@ -6,6 +6,11 @@
 function showFortune(evt) {
 
     // TODO: get the fortune and show it in the #fortune-text div
+    // use $.get
+    // put into this div: <div id="fortune-text"></div>
+    $.get('/fortune', (response) => {
+       $('#fortune-text').html(response); 
+    });
 }
 
 $('#get-fortune-button').on('click', showFortune);
@@ -23,7 +28,11 @@ function showWeather(evt) {
     let formData = {"zipcode": $("#zipcode-field").val()};
 
 
-    // TODO: request weather with that URL and show the forecast in #weather-info
+    // TODO: GET request weather with that URL 
+    // and show the forecast in #weather-info
+    $.get(url, formData, (response) => {
+        $('#weather-info').html(response.forecast); 
+     });
 }
 
 $("#weather-form").on('submit', showWeather);
